@@ -14,16 +14,31 @@
 <body>
     <input type="file" id="video-selector" class="video-selector"
         accept=".mp4, .avi, .mpg, .3gp, .mgv, .mov, .mkv, .ogv, .qtm, .str, .amc, .dvx, .flv, .evo">
-    <video src="" id="video" class="screen" poster="play.png"></video>
-    <div class="menu">
-        <button class="btn" id="play-btn">
-            <i class="fa-solid fa-play"></i>
-        </button>
-        <button class="btn" id="stop-btn">
-            <i class="fa-solid fa-stop"></i>
-        </button>
-        <input type="range" id="timeline" class="timeline" min="0" max="100" step="0.1" value="0" />
-        <div class="timestamp" id="timestamp">00:00</div>
+    <div class="container" id="container">
+        <video src="" id="video" class="screen" poster="play.png"></video>
+        <div class="menu hidden" id="menu">
+            <input type="range" id="timeline" class="timeline" min="0" max="100" step="0.1" value="0" />
+            <div class="menu-left-side">
+                <button class="btn" id="play-btn">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <button class="btn" id="stop-btn">
+                    <i class="fa-solid fa-stop"></i>
+                </button>
+                <div class="volume-area">
+                    <button class="btn volume-btn" id="volume-btn">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <input type="range" id="volume" class="volume timeline" min="0" max="1" step="0.1" value="0.5" />
+                </div>
+                <div class="timestamp" id="timestamp">00:00</div>
+            </div>
+            <div class="menu-right-side">
+                <button class="btn" id="full-screen-btn">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </body>
 
