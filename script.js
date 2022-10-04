@@ -1,3 +1,4 @@
+const videoSelector = document.getElementById('video-selector');
 const video = document.getElementById('video');
 const playBtn = document.getElementById('play-btn');
 const stopBtn = document.getElementById('stop-btn');
@@ -52,7 +53,17 @@ function setVideoProgress() {
     video.currentTime = (+timeline.value * video.duration) / 100;
 }
 
+function setVideoSrcAttribute() {
+    let movie = videoSelector.files[0];
+    let file = movie;
+    let url = URL.createObjectURL(file);
+    video.src = url;
+    timeline.value = 0;
+}
+
 // Event Listeners
+videoSelector.addEventListener('change', setVideoSrcAttribute);
+
 video.addEventListener('click', toggleVideoStatus);
 video.addEventListener('timeupdate', () => {
     updateTimeline();

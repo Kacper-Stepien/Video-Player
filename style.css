@@ -21,6 +21,30 @@ body {
     justify-content: center;
 }
 
+.video-selector {
+    padding: 1rem;
+    color: #000;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.video-selector::file-selector-button {
+    font-weight: bold;
+    color: dodgerblue;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    margin-right: 1rem;
+    transition: all .2s ease-in;
+}
+
+.video-selector::file-selector-button:hover {
+    transform: translateY(-5px);
+}
+
+
 .screen {
     background-color: #000;
     border-radius: 12px 12px 0 0;
