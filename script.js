@@ -1,3 +1,5 @@
+'use strict';
+
 const videoSelector = document.getElementById('video-selector');
 const videoContainer = document.getElementById('container')
 const video = document.getElementById('video');
@@ -10,8 +12,8 @@ const volumeBtn = document.getElementById('volume-btn');
 const volumeBar = document.getElementById('volume');
 const fullScreenBtn = document.getElementById('full-screen-btn');
 
-let loadedVideo = false;
-let soundLevel = 0.5;
+let loadedVideo = false;    // loadedVideo is false because at the start video tag has no src attribute
+let soundLevel = 0.5;       // default sound level - 1 is 100%, 0.5 is 50%
 
 function toggleVideoStatus() {
     if (!loadedVideo)
@@ -59,6 +61,7 @@ function updateTimestamp() {
     if (seconds < 10) {
         seconds = '0' + String(seconds);
     }
+
 
     timestamp.innerHTML = `${minutes}:${seconds}`;
 }
@@ -117,6 +120,7 @@ function launchIntoFullscreen(element) {
     } else {
         element.classList.toggle('fullscreen');
     }
+
     video.classList.add('screen-full-size');
     menu.classList.add('menu-full-screen');
     fullScreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i>';
@@ -130,6 +134,7 @@ function exitFullscreen() {
     } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
     }
+
     video.classList.remove('screen-full-size');
     menu.classList.remove('menu-full-screen');
     fullScreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i>'
@@ -139,7 +144,7 @@ function showMenu() {
     menu.classList.remove('hidden');
     setTimeout(() => {
         menu.classList.add('hidden')
-    }, 4000);
+    }, 5000);
 }
 
 function toggleSound() {
@@ -160,6 +165,7 @@ videoSelector.addEventListener('click', () => {
     video.pause();
     updatePlayIcon();
 });
+
 videoSelector.addEventListener('change', loadNewVideo);
 
 video.addEventListener('click', toggleVideoStatus);
@@ -176,4 +182,5 @@ volumeBtn.addEventListener('click', toggleSound);
 volumeBar.addEventListener('change', changeVolume);
 fullScreenBtn.addEventListener('click', toggleFullScreen);
 
-video.addEventListener('mouseover', showMenu);
+videoContainer.addEventListener('mousemove', showMenu);
+videoContainer.addEventListener('click', showMenu);
